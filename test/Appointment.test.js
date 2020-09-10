@@ -72,4 +72,10 @@ describe('AppointmentsDayView', () => {
     render(<AppointmentsDayView appointments={appointments} />);
     expect(container.textContent).toMatch('Alice');
   });
+
+  it('has a button element in eahc li', () => {
+    render(<AppointmentsDayView appointments={appointments} />);
+    expect(container.querySelectorAll('li > button')).toHaveLength(2);
+    expect(container.querySelectorAll('li > button')[0].type).toEqual('button');
+  });
 });
