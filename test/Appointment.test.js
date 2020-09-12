@@ -13,16 +13,16 @@ describe('Appointment', () => {
     container = document.createElement('div');
   });
 
-  it('renders the customer first name', () => {
-    customer = { firstName: 'Alice' };
+  it('renders the customer full name', () => {
+    customer =  { firstName: 'Alice', lastName: 'Sandoval' };
     render(<Appointment customer={customer} />);
-    expect(container.textContent).toMatch('Alice');
+    expect(container.textContent).toMatch('Alice Sandoval');
   });
 
-  it('renders another customer first name', () => {
-    customer = { firstName: 'Bob' };
+  it('renders another customer full name', () => {
+    customer = { firstName: 'Bob', lastName: 'Norman' };
     render(<Appointment customer={customer} />);
-    expect(container.textContent).toMatch('Bob');
+    expect(container.textContent).toMatch('Bob Norman');
   });
 });
 
@@ -32,11 +32,11 @@ describe('AppointmentsDayView', () => {
   const appointments = [
     {
       startsAt: today.setHours(12, 0),
-      customer: { firstName: 'Alice' },
+      customer: { firstName: 'Alice', lastName: 'Sandoval' },
     },
     {
       startsAt: today.setHours(13, 0),
-      customer: { firstName: 'Bob' },
+      customer: { firstName: 'Bob', lastName: 'Norman' },
     },
   ];
 
@@ -72,7 +72,7 @@ describe('AppointmentsDayView', () => {
 
   it('selects the first appointment by default', () => {
     render(<AppointmentsDayView appointments={appointments} />);
-    expect(container.textContent).toMatch('Alice');
+    expect(container.textContent).toMatch('Alice Sandoval');
   });
 
   it('has a button element in eahc li', () => {
@@ -85,6 +85,6 @@ describe('AppointmentsDayView', () => {
     render(<AppointmentsDayView appointments={appointments} />);
     const button = container.querySelectorAll('button')[1];
     ReactTestUtils.Simulate.click(button);
-    expect(container.textContent).toMatch('Bob');
+    expect(container.textContent).toMatch('Bob Norman');
   });
 });
