@@ -42,6 +42,12 @@ describe('Appointment', () => {
     render(<Appointment customer={customer} />);
     expect(container.textContent).toMatch('555-105-8228');
   });
+
+  it('renders another customer phone number', () => {
+    customer = customers[1];
+    render(<Appointment customer={customer} />);
+    expect(container.textContent).toMatch('555-453-3941');
+  });
 });
 
 describe('AppointmentsDayView', () => {

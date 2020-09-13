@@ -6,11 +6,11 @@ const appointTimeOfDay = (startsAt) => {
 };
 
 export const Appointment =
-  ({ customer: { firstName, lastName } }) => {
+  ({ customer: { firstName, lastName, phoneNumber } }) => {
   return (
     <div>
       <div>{firstName + ' ' + lastName}</div>
-      <div>555-105-8228</div>
+      <div>{phoneNumber}</div>
     </div>
   );
 };
