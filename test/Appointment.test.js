@@ -7,6 +7,18 @@ import { Appointment, AppointmentsDayView } from '../src/Appointment';
 describe('Appointment', () => {
   let customer;
   let container;
+  const customers = [
+    {
+      firstName: 'Alice',
+      lastName: 'Sandoval',
+      phoneNumber: '555-105-8228',
+    },
+    {
+      firstName: 'Bob',
+      lastName: 'Norman',
+      phoneNumber: '555-453-3941',
+    },
+  ];
   const render = (conponent) => ReactDOM.render(conponent, container);
 
   beforeEach(() => {
@@ -14,15 +26,21 @@ describe('Appointment', () => {
   });
 
   it('renders the customer full name', () => {
-    customer =  { firstName: 'Alice', lastName: 'Sandoval' };
+    customer = customers[0];
     render(<Appointment customer={customer} />);
     expect(container.textContent).toMatch('Alice Sandoval');
   });
 
   it('renders another customer full name', () => {
-    customer = { firstName: 'Bob', lastName: 'Norman' };
+    customer = customers[1];
     render(<Appointment customer={customer} />);
     expect(container.textContent).toMatch('Bob Norman');
+  });
+
+  it('renders the customer phone number', () => {
+    customer = customers[0];
+    render(<Appointment customer={customer} />);
+    expect(container.textContent).toMatch('555-105-8228');
   });
 });
 
