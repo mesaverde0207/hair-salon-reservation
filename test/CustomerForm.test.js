@@ -39,4 +39,9 @@ describe('CustomerForm', () => {
     render(<CustomerForm firstName="Alice" />);
     expect(labelFor('firstName').textContent).toEqual('First name');
   });
+
+  it('assigns an id that matches the label id to the first name field', () => {
+    render(<CustomerForm firstName="Alice" />);
+    expect(firstNameField().id).toEqual('firstName');
+  });
 });
