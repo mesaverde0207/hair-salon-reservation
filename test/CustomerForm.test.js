@@ -1,5 +1,6 @@
 /* eslint-env jest */
 import React from 'react';
+import ReactTestUtils from 'react-dom/test-utils';
 import { createContainer } from './domManipulators';
 import { CustomerForm } from '../src/CustomerForm';
 
@@ -43,5 +44,14 @@ describe('CustomerForm', () => {
   it('assigns an id that matches the label id to the first name field', () => {
     render(<CustomerForm firstName="Alice" />);
     expect(firstNameField().id).toEqual('firstName');
+  });
+
+  it('saves existing first name when submitted', async () => {
+    expect.hasAssertions();
+    render(
+      <CustomerForm firstName="Alice"
+        onSubmit={ ({ firstName }) =>
+          expect(firstName).toEqual('Alice')} />);
+    await ReactTestUtils.Simulate.submit(form('customer'));  // await needed?
   });
 });
