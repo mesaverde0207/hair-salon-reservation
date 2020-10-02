@@ -83,4 +83,15 @@ describe('CustomerForm', () => {
     itSavesExistingValueWhenSubmitted(fieldName, 'Alice');
     itSavesNewValueWhenSubmitted(fieldName, 'Bob');
   });
+
+  describe('last name field', () => {
+    const fieldName = 'lastName';
+    itRendersAsATextBox(fieldName);
+    itIncludesTheExistingValue(fieldName);
+    itRendersALabel(fieldName, 'Last name');
+    itAssignsAnIDThatMatchesTheLabelID(fieldName, 'lastName');
+    itSavesExistingValueWhenSubmitted(fieldName, 'Sandoval');
+    itSavesNewValueWhenSubmitted(fieldName, 'Norman');
+
+  });
 });
