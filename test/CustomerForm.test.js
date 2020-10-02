@@ -92,6 +92,15 @@ describe('CustomerForm', () => {
     itAssignsAnIDThatMatchesTheLabelID(fieldName, 'lastName');
     itSavesExistingValueWhenSubmitted(fieldName, 'Sandoval');
     itSavesNewValueWhenSubmitted(fieldName, 'Norman');
+  });
 
+  describe('phone number field', () => {
+    const fieldName = 'phoneNumber';
+    itRendersAsATextBox(fieldName);
+    itIncludesTheExistingValue(fieldName);
+    itRendersALabel(fieldName, 'Phone number');
+    itAssignsAnIDThatMatchesTheLabelID(fieldName, 'phoneNumber');
+    itSavesExistingValueWhenSubmitted(fieldName, '555-105-8228');
+    itSavesNewValueWhenSubmitted(fieldName, '555-453-3941');
   });
 });
