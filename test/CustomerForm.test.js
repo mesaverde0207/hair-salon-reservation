@@ -103,4 +103,10 @@ describe('CustomerForm', () => {
     itSavesExistingValueWhenSubmitted(fieldName, '555-105-8228');
     itSavesNewValueWhenSubmitted(fieldName, '555-453-3941');
   });
+
+  it('renders a submit button', () => {
+    render(<CustomerForm />);
+    const submitButton = container.querySelector('input[type="submit"]');
+    expect(submitButton).not.toBeNull();
+  });
 });
