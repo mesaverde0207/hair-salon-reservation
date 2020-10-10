@@ -1,3 +1,4 @@
+/* eslint-env commonjs */
 const path = require('path');
 const webpack = require('webpack');
 
