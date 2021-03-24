@@ -19,6 +19,13 @@ describe('AppointmentForm', () => {
   });
 
   describe('service field', () => {
+    const findOption = (dropdownNode, textContent) => {
+      const options = Array.from(dropdownNode.childNodes);
+      return options.find(
+        option => option.textContent == textContent
+      );
+    };
+
     it('renders as a select box', () => {
       render(<AppointmentForm />);
       expect(field('service')).not.toBeNull();
@@ -44,6 +51,21 @@ describe('AppointmentForm', () => {
       expect(renderedServices).toEqual(
         expect.arrayContaining(selectableServices)
       );
+    });
+
+    it('pre-selects the existing value', () => {
+      const services = ['Cut', 'Blow-dry'];
+      render(
+        <AppointmentForm
+          selectableServices={services}
+          service="Blow-dry"
+        />
+      );
+      const option = findOption(
+        field('service'),
+        'Blow-dry'
+      );
+      expect(option.selected).toBeTruthy();
     });
   });
 });
